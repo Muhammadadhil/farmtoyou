@@ -40,8 +40,11 @@ export function OtpVerificationStep({ onVerify, phoneNumber }: OtpVerificationSt
 
         // Auto-verify when all digits are entered
         if (newOtp.every((digit) => digit !== "") && newOtp.join("").length === 4) {
+            
             onVerify(newOtp.join(""));
         }
+
+        
     };
 
     const handleKeyDown = (index: number, e: React.KeyboardEvent) => {
