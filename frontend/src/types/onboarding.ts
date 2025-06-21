@@ -26,7 +26,6 @@ export interface BuyerDetails {
     phoneNumber: string;
 }
   
-
 export interface OnboardingData {
     language?: string;
     role: string;
