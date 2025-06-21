@@ -1,15 +1,16 @@
-import Homepage from "./pages/LandingPage";
+import LandingPage from "./pages/LandingPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Onboarding from "./pages/Onboarding";
-import { Toaster } from "@/components/ui/sonner";
+import Homepage from "./pages/HomePage";
+// import { Toaster } from "@/components/ui/sonner";
 
 function App() {
     return (
         <>
-            <Toaster />
+            {/* <Toaster /> */}
             <Router>
                 <Routes>
-                    <Route path="/" element={<Homepage />} />
+                    <Route path="/" element={<LandingPage />} />
                     <Route path="/onboarding" element={<Onboarding />} />
                     <Route path="/dashboard" element={<Homepage />} />
                 </Routes>

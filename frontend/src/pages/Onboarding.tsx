@@ -96,7 +96,7 @@ export default function Onboarding() {
         // api call for otp verification
         await new Promise((resolve) => setTimeout(resolve, 2000));
         navigate("/dashboard");
-        toast('Welcome to the farmers world')
+        // toast('Welcome to the farmers world')
     }
 
     if (!currentStepData) {
