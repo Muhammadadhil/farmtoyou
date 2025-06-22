@@ -9,11 +9,11 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-const production_api = process.env.PROD_SERVER_API as string;
+const FRONTEND_URL = process.env.FRONTEND_URL as string;
 
 app.use(
     cors({
-        origin: ["http://localhost:5173", production_api],
+        origin: ["http://localhost:5173", FRONTEND_URL],
         credentials: true,
     })
 );
