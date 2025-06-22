@@ -110,7 +110,6 @@ export default function Onboarding() {
             }
         } catch (error) {
             console.log(error);
-            toast(error)
         }
     };
 

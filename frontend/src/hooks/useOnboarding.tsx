@@ -4,7 +4,7 @@ import type { OnboardingData } from "../types/onboarding";
 export function useOnboarding() {
 
     const [currentStep, setCurrentStep] = useState(0);
-    const [data, setData] = useState<OnboardingData>({});
+    const [data, setData] = useState<OnboardingData>({ role: "" });
     const [isLoading, setIsLoading] = useState(false);
 
     const updateData = useCallback((newData: Partial<OnboardingData>) => {
@@ -21,7 +21,7 @@ export function useOnboarding() {
 
     const resetOnboarding = useCallback(() => {
         setCurrentStep(0);
-        setData({});
+        setData({ role: "" });
     }, []);
 
     return {
