@@ -117,7 +117,12 @@ export default function Onboarding() {
     const otpVerification = async (phoneNumber: string, code: string) => {
         try {
             await VerifyOtp(phoneNumber, code);
-            navigate("/dashboard");
+            if(data.role == 'farmer'){
+                navigate("/farmer-dashboard");
+            }else{
+                navigate("/dashboard");
+            }
+
             toast.success("Verification Successful!");
         } catch (error: any) {
             if (error.response && error.response.data) {
