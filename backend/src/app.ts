@@ -4,12 +4,16 @@ import bodyParser from "body-parser";
 import authRoutes from "./routes/routes";
 import errorHandler from "./middlewares/errorHandler";
 import productRoutes from "./routes/productRoutes";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
+const production_api = process.env.PROD_SERVER_API as string;
 
 app.use(
     cors({
-        origin: ["http://localhost:5173", "http://"],
+        origin: ["http://localhost:5173", production_api],
         credentials: true,
     })
 );
