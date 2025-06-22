@@ -6,7 +6,12 @@ import errorHandler from "./middlewares/errorHandler";
 
 const app = express();
 
-app.use(cors());
+app.use(
+    cors({
+        origin: ["http://localhost:5173", "http://another-example.com"],
+        credentials: true,
+    })
+);
 app.use(bodyParser.json());
 
 // Routes

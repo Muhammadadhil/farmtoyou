@@ -2,12 +2,12 @@ import LandingPage from "./pages/LandingPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Onboarding from "./pages/Onboarding";
 import Homepage from "./pages/HomePage";
-// import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from "react-hot-toast";
 
 function App() {
     return (
         <>
-            {/* <Toaster /> */}
+            <Toaster />
             <Router>
                 <Routes>
                     <Route path="/" element={<LandingPage />} />

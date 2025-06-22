@@ -68,7 +68,16 @@ export function FarmDetailsStep({ onUpdate, farmDetails = {} }: FarmDetailsStepP
                         type="tel"
                         placeholder="Enter your phone number (for OTP verification)"
                         value={details.phoneNumber || ""}
-                        onChange={(e) => handleInputChange("phoneNumber", e.target.value)}
+                        onChange={(e) => {
+                            let phoneNumber = e.target.value;
+
+                            // Add +91 prefix if not already present
+                            if (phoneNumber && !phoneNumber.startsWith("+91")) {
+                                phoneNumber = `+91${phoneNumber}`;
+                            }
+
+                            handleInputChange("phoneNumber", phoneNumber);
+                        }}
                         className="h-14 px-4 text-base border-gray-200 rounded-2xl focus:border-green-500 focus:ring-green-500"
                     />
                 </div>

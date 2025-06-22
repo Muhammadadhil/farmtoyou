@@ -8,7 +8,8 @@ import { FarmDetailsStep } from "@/components/farm-details-step";
 import type { OnboardingStep } from "../types/onboarding";
 import { OtpVerificationStep } from "@/components/otp-verification-step";
 import { useNavigate } from "react-router-dom";
-import { toast } from "sonner";
+import { toast } from "react-hot-toast";
+import { signUp, VerifyOtp } from "@/api/auth";
 
 const steps: OnboardingStep[] = [
     {
@@ -68,36 +69,65 @@ export default function Onboarding() {
 
     const handleContinue = async () => {
         if (isDetailsStep) {
-            setIsLoading(true);
-            // api call for saving in db, and sent otp from backend
-            await new Promise((resolve) => setTimeout(resolve, 2000));
-            setIsLoading(false);
-            nextStep();
+            setIsLoading(true); // Start loading
+
+            try {
+                // API call
+                await signUp(data);
+                nextStep();
+            } catch (error) {
+                // console.log(error.response.data.message); 
+                if (error && typeof error === "object" && "response" in error && error.response && typeof error.response === "object" && "data" in error.response && error.response.data && typeof error.response.data === "object" && "message" in error.response.data) {
+                    toast.error((error.response.data as { message: string }).message);
+                } else {
+                    toast.error("An unexpected error occurred.");
+                }
+            } finally {
+                setIsLoading(false); 
+            }
         } else {
             nextStep();
         }
     };
+    
 
     const handleDataUpdate = (key: string, value: any) => {
-        if (key === "details") {
-            if (data.role === "farmer") {
-                updateData({ farmDetails: value });
+        try {
+            if (key === "details") {
+                if (data.role === "farmer") {
+                    updateData({ farmDetails: value });
+                } else {
+                    updateData({ buyerDetails: value });
+                }
+            } else if (key === "otp") {
+                if (data.role == "farmer") {
+                    otpVerification(data.farmDetails?.phoneNumber ?? "", value);
+                } else {
+                    otpVerification(data.buyerDetails?.phoneNumber ?? "", value);
+                }
             } else {
-                updateData({ buyerDetails: value });
+                updateData({ [key]: value });
             }
-        } else if (key === "otp") {
-            otpVerification();
-        } else {
-            updateData({ [key]: value });
+        } catch (error) {
+            console.log(error);
+            toast(error)
         }
     };
 
-    const otpVerification = async () => {
-        // api call for otp verification
-        await new Promise((resolve) => setTimeout(resolve, 2000));
-        navigate("/dashboard");
-        // toast('Welcome to the farmers world')
-    }
+    const otpVerification = async (phoneNumber: string, code: string) => {
+        try {
+            await VerifyOtp(phoneNumber, code);
+            navigate("/dashboard");
+            toast.success("Verification Successful!");
+        } catch (error: any) {
+            if (error.response && error.response.data) {
+                toast.error(error.response.data.message || "OTP verification failed. Please try again.");
+            } else {
+                toast.error("Something went wrong. Please try again later.");
+            }
+        }
+    };
+    
 
     if (!currentStepData) {
         return (
