@@ -61,9 +61,19 @@ export default function LadingPage() {
                         <Link to={"/onboarding"}>
                             <Button
                                 size="lg"
-                                className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold text-lg px-[170px] py-7 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
+                                className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold text-base md:text-lg px-8 md:px-32 lg:px-[170px] py-4 md:py-7 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
                             >
-                                Continue
+                                Continue Signup
+                            </Button>
+                        </Link>
+                    </div>
+                    <div className="text-center mt-2">
+                        <Link to={"/login"}>
+                            <Button
+                                size="lg"
+                                className="bg-green-400 hover:bg-green-500 text-black font-semibold text-base md:text-lg px-8 md:px-32 lg:px-[170px] py-4 md:py-7 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer"
+                            >
+                                Login
                             </Button>
                         </Link>
                     </div>

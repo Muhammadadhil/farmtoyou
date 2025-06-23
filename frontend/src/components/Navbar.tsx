@@ -1,5 +1,6 @@
-
-import { Bell, MapPin, Home, ShoppingBag, Tractor, ShoppingCart, User } from "lucide-react";
+import { Bell, MapPin, Home, ShoppingBag, Tractor, ShoppingCart, User, LogOut } from "lucide-react";
+import { useUser } from "@/context/UserContext";
+import { Button } from "@/components/ui/button";
 
 const navItems = [
     { icon: Home, label: "Home", active: true },
@@ -10,6 +11,12 @@ const navItems = [
 ];
 
 export function Navbar() {
+    const user = useUser();
+
+    const handleLogout = ()=>{
+        user.logout();
+    }
+
     return (
         <div className="bg-white border-b border-gray-100">
             <div className="px-4 py-4">
@@ -42,6 +49,16 @@ export function Navbar() {
                             <Bell className="w-6 h-6 text-gray-600" />
                             <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
                         </div>
+
+                        {/* Logout Button */}
+                        <Button
+                            onClick={handleLogout}
+                            variant="outline"
+                            className="flex items-center gap-2 px-4 py-2 ml-4 text-gray-600 hover:text-red-600 hover:bg-red-50 border-red-200"
+                        >
+                            <LogOut className="w-5 h-5" />
+                            <span className="font-medium">Logout</span>
+                        </Button>
                     </div>
                 </div>
             </div>

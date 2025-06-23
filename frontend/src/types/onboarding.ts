@@ -25,13 +25,19 @@ export interface BuyerDetails {
     deliveryLocation: string;
     phoneNumber: string;
 }
-  
+
 export interface OnboardingData {
     language?: string;
     role: string;
     farmDetails?: FarmDetails;
     buyerDetails?: BuyerDetails;
     otpVerified?: boolean;
+}
+
+export interface loginData {
+    phoneNumber: string;
+    role: string;
+    password: string;
 }
 
 export interface OnboardingStep {

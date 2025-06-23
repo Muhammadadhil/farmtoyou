@@ -1,20 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Navbar } from "../components/Navbar";
 import { SearchBar } from "../components/search-bar";
 import { PromoCarousel } from "../components/promo-carousal";
 import { ProductCard } from "../components/product-card";
 import { BottomNav } from "../components/ bottom-nav";
-import { products, promoCards } from "../data/product";
+import { promoCards } from "../data/product";
+import type { FarmerProduct } from "@/types/farmer";
+import { farmerProducts } from "@/data/farmer-data";
+import { getProducts } from "@/api/product";
 
 export default function Homepage() {
     const [cart, setCart] = useState<string[]>([]);
+    const [products, setProducts] = useState<FarmerProduct[]>(farmerProducts);
 
     const handleAddToCart = (productId: string) => {
         setCart((prev) => [...prev, productId]);
         console.log(`Added product ${productId} to cart`);
     };
 
-    console.log('cart items:',cart);
+    const getAvailableProducts = async () => {
+        const products = await getProducts();
+        setProducts(products.data.products);
+    };
+
+    useEffect(() => {
+        getAvailableProducts();
+    }, []);
+
+    console.log("cart items:", cart);
 
     return (
         <div className="min-h-screen bg-gray-50">

@@ -10,6 +10,8 @@ import { OtpVerificationStep } from "@/components/otp-verification-step";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { signUp, VerifyOtp } from "@/api/auth";
+import { useUser } from "../context/UserContext";
+
 
 const steps: OnboardingStep[] = [
     {
@@ -66,6 +68,8 @@ export default function Onboarding() {
     const canContinue = currentStepData?.validation ? currentStepData.validation(data) : true;
 
     const navigate = useNavigate();
+    const user = useUser();
+    
 
     const handleContinue = async () => {
         if (isDetailsStep) {
@@ -115,12 +119,13 @@ export default function Onboarding() {
 
     const otpVerification = async (phoneNumber: string, code: string) => {
         try {
-            await VerifyOtp(phoneNumber, code);
+            const result = await VerifyOtp(phoneNumber, code);
             if(data.role == 'farmer'){
                 navigate("/farmer-dashboard");
             }else{
                 navigate("/dashboard");
             }
+            user.login({id: result.data.id, name: result.data.name, role: result.data.role});
 
             toast.success("Verification Successful!");
         } catch (error: any) {

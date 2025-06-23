@@ -7,7 +7,7 @@ export const createProduct = asyncHandler(async (req: Request, res: Response) =>
     const productData: ProductDocument = req.body;
     console.log(productData);
     // Validate required fields
-    if (!productData.name || !productData.price || !productData.unit ) {
+    if (!productData.name || !productData.price || !productData.unit || !productData.farmerId) {
         return res.status(400).json({ message: "All required fields must be provided." });
     }
 
@@ -30,6 +30,6 @@ export const getProductsByFarmer = asyncHandler(async (req: Request, res: Respon
         return res.status(400).json({ message: "Farmer ID is required" });
     }
 
-    const farmerProducts = await Product.find({ farmer: farmerId });
+    const farmerProducts = await Product.find({ farmerId: farmerId });
     return res.status(200).json({ message: "Farmer's products retrieved successfully", products: farmerProducts });
 });

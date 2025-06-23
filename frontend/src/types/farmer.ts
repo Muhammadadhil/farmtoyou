@@ -18,6 +18,7 @@ export interface CreateProductData {
     unit: string;
     category: string;
     quantity: number;
+    farmerId: string;
 }
 
 export interface FarmerProfile {

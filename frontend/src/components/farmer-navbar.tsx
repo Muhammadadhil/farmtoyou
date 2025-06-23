@@ -1,12 +1,18 @@
-
-import { Bell, MapPin, Plus } from "lucide-react";
+import { Bell, LogOut, MapPin, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useUser } from "@/context/UserContext";
 
 interface FarmerNavbarProps {
     onCreateProduct: () => void;
 }
 
 export function FarmerNavbar({ onCreateProduct }: FarmerNavbarProps) {
+    const user = useUser();
+
+    const handleLogout = () => {
+        user.logout();
+    };
+
     return (
         <div className="bg-white border-b border-gray-100">
             <div className="px-4 py-4">
@@ -30,6 +36,11 @@ export function FarmerNavbar({ onCreateProduct }: FarmerNavbarProps) {
                                 <div className="absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></div>
                             </div>
                         </div>
+                        {/* Logout Button */}
+                        <Button onClick={handleLogout} variant="outline" className="flex items-center gap-2 px-4 py-2 ml-4 text-gray-600 hover:text-red-600 hover:bg-red-50 border-red-200">
+                            <LogOut className="w-5 h-5" />
+                            <span className="font-medium">Logout</span>
+                        </Button>
                     </div>
                 </div>
             </div>

@@ -10,6 +10,6 @@ export const getProducts = async () => {
 };
 
 
-export const getFarmerProducts = async () => {
-    return await instace.get("/products/");
+export const getFarmerProducts = async (id:string) => {
+    return await instace.get(`/products/farmer/${id}`);
 };

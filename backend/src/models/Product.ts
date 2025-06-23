@@ -7,6 +7,7 @@ export interface ProductDocument extends Document {
     location: string;
     inStock: boolean;
     discount?: number;
+    farmerId: string;
 }
 
 const ProductSchema = new Schema<ProductDocument>(
@@ -16,8 +17,10 @@ const ProductSchema = new Schema<ProductDocument>(
         unit: { type: String, required: true },
         inStock: { type: Boolean, required: true, default: true },
         discount: { type: Number },
+        farmerId: { type: String, required: true },
     },
     { timestamps: true }
 );
 
 export default mongoose.model<ProductDocument>("Product", ProductSchema);
+
