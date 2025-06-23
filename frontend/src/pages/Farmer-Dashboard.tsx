@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FarmerNavbar } from "../components/farmer-navbar";
 import { FarmerProductCard } from "../components/farmer-product-card";
 import { CreateProductForm } from "../components/create-product-form";
@@ -13,6 +13,10 @@ export default function FarmerDashboard() {
     const handleCreateProduct = () => {
         setShowCreateForm(true);
     };
+
+    useEffect(() => {
+        
+    }, [products]);
 
     const handleSubmitProduct = async (data: CreateProductData) => {
         try {

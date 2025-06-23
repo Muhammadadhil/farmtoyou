@@ -4,15 +4,16 @@ import { Link } from "react-router-dom";
 
 export default function LadingPage() {
     const farmImages = [
-        "/src/assets/woman-holding-basket-full-different-vegetables.jpg",
-        "/src/assets/shelley-pauls-Zaiuy5dKeCk-unsplash.jpg",
-        "/src/assets/organic-food-farm.jpg",
-        "/src/assets/julian-hanslmaier-bWg-BeVJPG4-unsplash.jpg",
-        "/src/assets/farmer-holds-rice-hand.jpg",
-        "/src/assets/eugene-golovesov-M7Mb3hRvoh0-unsplash.jpg",
-        "/src/assets/farmer-holds-rice-hand.jpg",
-        "/src/assets/hari-gaddigopula-xZEYonpj41o-unsplash.jpg",
+        "/assets/woman-holding-basket-full-different-vegetables.jpg",
+        "/assets/shelley-pauls-Zaiuy5dKeCk-unsplash.jpg",
+        "/assets/organic-food-farm.jpg",
+        "/assets/julian-hanslmaier-bWg-BeVJPG4-unsplash.jpg",
+        "/assets/farmer-holds-rice-hand.jpg",
+        "/assets/eugene-golovesov-M7Mb3hRvoh0-unsplash.jpg",
+        "/assets/farmer-holds-rice-hand.jpg",
+        "/assets/hari-gaddigopula-xZEYonpj41o-unsplash.jpg",
     ];
+
     return (
         <div className="min-h-screen bg-gradient-to-br tracking-tighter">
             <div className="container mx-auto px-4 py-8 lg:py-16">

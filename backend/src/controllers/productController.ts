@@ -5,10 +5,9 @@ import asyncHandler from "../middlewares/asyncHandler";
 // Create a new product
 export const createProduct = asyncHandler(async (req: Request, res: Response) => {
     const productData: ProductDocument = req.body;
-    console.log('!!!!!! creating Product !!!!!');
     console.log(productData);
     // Validate required fields
-    if (!productData.name || !productData.price || !productData.unit || !productData.farmer || !productData.location) {
+    if (!productData.name || !productData.price || !productData.unit ) {
         return res.status(400).json({ message: "All required fields must be provided." });
     }
 

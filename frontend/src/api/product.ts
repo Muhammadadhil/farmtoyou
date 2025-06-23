@@ -8,3 +8,8 @@ export const addProduct = async (data: CreateProductData) => {
 export const getProducts = async () => {
     return await instace.get("/products/");
 };
+
+
+export const getFarmerProducts = async () => {
+    return await instace.get("/products/");
+};
