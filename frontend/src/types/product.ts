@@ -3,10 +3,6 @@ export interface Product {
     name: string;
     price: number;
     unit: string;
-    image: string;
-    farmer: string;
-    location: string;
-    inStock: boolean;
     discount?: number;
 }
 

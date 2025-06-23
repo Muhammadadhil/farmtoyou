@@ -11,7 +11,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
     return (
         <div className="bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300">
             <div className="relative">
-                <img src={product.image || "/placeholder.svg"} alt={product.name} width={200} height={150} className="w-full h-32 lg:h-40 object-cover" />
+                <img src={ "/placeholder.svg"} alt={product.name} width={200} height={150} className="w-full h-32 lg:h-40 object-cover" />
                 {product.discount && <div className="absolute top-2 left-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">{product.discount}% OFF</div>}
                 <button
                     onClick={() => onAddToCart(product.id)}
@@ -39,8 +39,8 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
                     </div>
                 </div>
                 <div className="mt-2 text-xs text-gray-500">
-                    <div>by {product.farmer}</div>
-                    <div>{product.location}</div>
+                    {/* <div>by {product.farmer}</div> */}
+                    
                 </div>
             </div>
         </div>

@@ -6,10 +6,6 @@ export const products: Product[] = [
         name: "Ooty Carrot",
         price: 45,
         unit: "per kg",
-        image: "/placeholder.svg?height=150&width=150",
-        farmer: "Ravi Kumar",
-        location: "Ooty, Tamil Nadu",
-        inStock: true,
     },
     // {
     //     id: "2",

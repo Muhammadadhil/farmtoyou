@@ -46,7 +46,7 @@ export default function Homepage() {
                     <h2 className="text-xl lg:text-2xl font-bold text-gray-900 mb-4">Seasonal Produce</h2>
 
                     <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4">
-                        {products.map((product) => (
+                        {products?.map((product) => (
                             <ProductCard key={product.id} product={product} onAddToCart={handleAddToCart} />
                         ))}
                     </div>

@@ -11,6 +11,7 @@ export interface FarmerProduct {
     updatedAt: string;
 }
 
+
 export interface CreateProductData {
     name: string;
     description: string;
