@@ -84,26 +84,26 @@ export const sendOtp = async (phoneNumber: string) => {
     await otpRecord.save();
     console.log("generated otp:", otp);
 
-    // await sendSms(phoneNumber, otp);
+    await sendSms(phoneNumber, otp);
 };
 
 export const sendSms = async (phoneNumber: string, otp: string) => {
-    // try {
-    //     const response = await axios.post('https://www.fast2sms.com/dev/bulkV2', {
-    //         "route": "q",
-    //         "message": `Your farmtoyou code:${otp}`,
-    //         "flash": 0,
-    //         "numbers": `${phoneNumber}`,
-    //     }, {
-    //         headers: {
-    //             "authorization": `${process.env.FAST2SMS_API_KEY}`,
-    //             "Content-Type": "application/json"
-    //         }
-    //     })
-    //     console.log(response.data);
-    // } catch (error) {
-    //     console.log(error);
-    // }
+    try {
+        const response = await axios.post('https://www.fast2sms.com/dev/bulkV2', {
+            "route": "q",
+            "message": `Your farmtoyou code:${otp}`,
+            "flash": 0,
+            "numbers": `${phoneNumber}`,
+        }, {
+            headers: {
+                "authorization": `${process.env.FAST2SMS_API_KEY}`,
+                "Content-Type": "application/json"
+            }
+        })
+        console.log(response.data);
+    } catch (error) {
+        console.log(error);
+    }
 };
 
 // Verify OTP
